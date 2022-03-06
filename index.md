@@ -61,4 +61,21 @@ long-term data)
 • `y := R3`  
 • y is changed; R3 is unchanged  
 
+### An assignment statement in assembly language
+• High-level language statement
+`x := a+b+c`
+• Assembly language
+```
+load R1,a[R0] ; R1 := a
+load R2,b[R0] ; R2 := b
+add R3,R1,R2 ; R3 := a+b
+load R4,c[R0] ; R4 := c
+add R5,R3,R4 ; R5 := (a+b) + c
+store R5,x[R0] ; x := a+b+c
+```
+• Use load to copy variables from memory to registers
+• Do arithmetic with add, sub, mul, div
+• Use store to copy result back to memory
+
+
 [^1]: Each 16-bit register is 16 copies of the reg1 circuit

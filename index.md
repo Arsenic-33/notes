@@ -20,11 +20,23 @@ add R12,R1,R7 ; means R12 := R1 + R7
 ```
 • General form
 ```
-add dest,op1,op2 *where dest, op1, op2 are registers*
+add dest,op1,op2 ```*where dest, op1, op2 are registers*
 **The two operands are added, the result is placed in the destination**
-*Meaning:* dest := op1 + op2
+*Meaning:* ```dest := op1 + op2
 ```
-
+---
+### Register R0 and R15 are special!
+• **You should not use R0 or R15 to hold ordinary variables!**
+• **R0 always contains 0**
+– Any time you need the number 0, it's available in R0
+– You cannot change the value of R0
+– It is legal to use R0 as the destination, but it will still be 0 after you do it!
+– add R0,R2,R3 ; does nothing (R0 will not change)
+•** R15 holds status information**
+– Some instructions place additional information in R15 (is the result
+negative? was there an overflow?)
+– Therefore, R15 is for temporary information (not a safe place to keep
+long-term data)
 
 
 [^1]: Each 16-bit register is 16 copies of the reg1 circuit

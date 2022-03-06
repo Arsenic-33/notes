@@ -1,4 +1,4 @@
-# CS1S Notes (Sigma 16)
+# Sigma 16 Notes
 ## Lecture 7 (First)
 ### Structure of Registers
 The RTM circuit has 4 (R0, …, R3), each holding 4 bits 
@@ -109,4 +109,28 @@ jumpgt > greater than
 ```
 cmp R2,R3 ; compare R2 with R3
 jumplt loop[R0] ; if R2 < R3 then goto loop
+```
+
+### if bexp then S1 else S2
+```
+if x<y
+then { S1 }
+else { S2 }
+S3
+```
+
+Compiled into
+```
+load R1,x[R0]
+load R2,y[R0]
+cmp R1,R2
+jumpge else[R0]
+ **then part of the statement**
+instructions for S1
+jump done[R0]
+ **else part of the statement**
+else
+instructions for S2
+done
+instructions for statement S3 
 ```

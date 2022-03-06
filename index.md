@@ -94,3 +94,19 @@ z data 99
 Static variables are placed in memory after the program
 
 [^1]: Each 16-bit register is 16 copies of the reg1 circuit
+
+
+## Lecture 8 (Control Structures)
+### Conditional jumps: Boolean decision
+• The result of a cmp instruction can be used to control a conditional jump  
+jumplt < less than  
+jumple <= less than or equal  
+jumpne != not equal  
+jumpeq = equal  
+jumpge >= greater than or equal  
+jumpgt > greater than  
+• Example:  
+```
+cmp R2,R3 ; compare R2 with R3
+jumplt loop[R0] ; if R2 < R3 then goto loop
+```

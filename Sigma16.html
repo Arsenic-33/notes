@@ -105,6 +105,37 @@ S3
 <span class="hljs-symbol">done</span>
 <span class="hljs-symbol">instructions</span> for statement <span class="hljs-built_in">S3</span>
 </code></pre>
+<h3 id="while-b-do-s">while B do S</h3>
+<pre><code><span class="hljs-keyword">while</span> i&lt;n <span class="hljs-keyword">do</span>
+{ S1 }
+S2
+</code></pre><p>Compiled into</p>
+<pre><code><span class="hljs-keyword">lea</span> <span class="hljs-built_in">R1</span>,<span class="hljs-number">1</span>[<span class="hljs-built_in">R0</span>]
+load <span class="hljs-built_in">R2</span>,i[<span class="hljs-built_in">R0</span>]
+load <span class="hljs-built_in">R3</span>,n[<span class="hljs-built_in">R0</span>]
+<span class="hljs-keyword">loop</span>
+<span class="hljs-keyword">cmp</span> <span class="hljs-built_in">R2</span>,<span class="hljs-built_in">R3</span>
+jumpge done[<span class="hljs-built_in">R0</span>]
+… instructions for the <span class="hljs-keyword">loop</span> body S1
+<span class="hljs-keyword">add</span> <span class="hljs-built_in">R2</span>,<span class="hljs-built_in">R2</span>,<span class="hljs-built_in">R1</span>
+jump <span class="hljs-keyword">loop</span>[<span class="hljs-built_in">R0</span>]
+done
+instructions for S2
+</code></pre><h3 id="nested-statements">Nested statements</h3>
+<p>• In larger programs, there will be nested statements  </p>
+<pre><code>if <span class="hljs-keyword">b1
+</span>    then { <span class="hljs-built_in">S1</span><span class="hljs-comment">;</span>
+        if <span class="hljs-keyword">b2 </span>then {<span class="hljs-built_in">S2</span>} else {<span class="hljs-built_in">S3</span>}<span class="hljs-comment">;</span>
+        <span class="hljs-built_in">S4</span><span class="hljs-comment">;</span>
+    }
+    else { <span class="hljs-built_in">S5</span><span class="hljs-comment">;</span>
+        while <span class="hljs-keyword">b3 </span>do {<span class="hljs-built_in">S6</span>}<span class="hljs-comment">;</span>
+    }
+<span class="hljs-built_in">S7</span>
+</code></pre><h3 id="how-to-compile-nested-statements">How to compile nested statements</h3>
+<p>• A block is a sequence of instructions<br>– To execute it, always start with the first statement<br>– When it finishes, it always reaches the last statement<br>• Every high-level statement should be compiled into a block of code<br>• This block may contain internal structure (several smaller blocks)<br>– To execute it you should always begin at the beginning and it should
+always finish at the end<br>• The previous patterns work for nested statements<br>• But you need to use new labels (can&#39;t have the same label in several places)  </p>
+
 
 </div>
   </body>

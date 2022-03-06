@@ -269,3 +269,10 @@ hr {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+code {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}

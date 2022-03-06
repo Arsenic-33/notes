@@ -21,7 +21,7 @@ add R12,R1,R7 ; means R12 := R1 + R7
 • General form
 `add dest,op1,op2 ` *where dest, op1, op2 are registers*  
 **The two operands are added, the result is placed in the destination**  
-*Meaning:* `dest := op1 + op2`  
+Meaning: `dest := op1 + op2`  
 ---------------------
 ### Register R0 and R15 are special!
 • **You should not use R0 or R15 to hold ordinary variables!**  
@@ -134,3 +134,49 @@ instructions for S2
 done
 instructions for statement S3 
 ```
+
+### while B do S
+```
+while i<n do
+{ S1 }
+S2
+```
+Compiled into
+```
+lea R1,1[R0]
+load R2,i[R0]
+load R3,n[R0]
+loop
+cmp R2,R3
+jumpge done[R0]
+… instructions for the loop body S1
+add R2,R2,R1
+jump loop[R0]
+done
+instructions for S2
+```
+
+### Nested statements  
+• In larger programs, there will be nested statements  
+
+```
+if b1
+	then { S1;
+		if b2 then {S2} else {S3};
+		S4;
+	}
+	else { S5;
+		while b3 do {S6};
+	}
+S7
+```
+### How to compile nested statements  
+• A block is a sequence of instructions  
+– To execute it, always start with the first statement  
+– When it finishes, it always reaches the last statement  
+• Every high-level statement should be compiled into a block of code  
+• This block may contain internal structure (several smaller blocks)  
+– To execute it you should always begin at the beginning and it should
+always finish at the end  
+• The previous patterns work for nested statements  
+• But you need to use new labels (can't have the same label in several places)  

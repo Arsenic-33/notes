@@ -22,7 +22,7 @@ add R12,R1,R7 ; means R12 := R1 + R7
 `add dest,op1,op2 ` *where dest, op1, op2 are registers*  
 **The two operands are added, the result is placed in the destination**  
 *Meaning:* `dest := op1 + op2`  
----
+---------------------
 ### Register R0 and R15 are special!
 • **You should not use R0 or R15 to hold ordinary variables!**  
 • **R0 always contains 0**  
@@ -30,25 +30,35 @@ add R12,R1,R7 ; means R12 := R1 + R7
 – You cannot change the value of R0  
 – It is legal to use R0 as the destination, but it will still be 0 after you do it!  
 – `add R0,R2,R3` ; does nothing (R0 will not change)  
-•** R15 holds status information**  
+• ** R15 holds status information**  
 – Some instructions place additional information in R15 (is the result
 negative? was there an overflow?)  
 – Therefore, R15 is for temporary information (not a safe place to keep
 long-term data)  
 
 ### Registers and memory
-• Register file
-– 16 registers (too small to hold all your variables)
-– Each register holds a 16-bit word
-– Names are R0, R1, R2, ..., R15
-– You can do arithmetic on data in the registers
-– Use registers to hold data temporarily that you're doing arithmetic on
-• Memory
-– 65,536 memory locations
-– Each memory location holds a 16-bit word
-– Each memory location has an address 0, 1, 2, …, 65,535
-– The machine cannot do arithmetic on a memory location
-– Use memory locations to store program variables and the program itself
+• Register file  
+– 16 registers (too small to hold all your variables)  
+– Each register holds a 16-bit word  
+– Names are R0, R1, R2, ..., R15  
+– You can do arithmetic on data in the registers  
+– Use registers to hold data temporarily that you're doing arithmetic on  
+• Memory  
+– 65,536 memory locations  
+– Each memory location holds a 16-bit word  
+– Each memory location has an address 0, 1, 2, …, 65,535  
+– The machine cannot do arithmetic on a memory location  
+– Use memory locations to store program variables and the program itself  
 
+### Copying a word between memory and register
+• There are two instructions for accessing the memory  
+– load copies a variable from memory to a register  
+• `load R2,x[R0]` copies the variable x from memory to register R2  
+• `R2 := x`  
+• R2 is changed; x is unchanged  
+– store copies a variable from a register to memory  
+• `store R3,y[R0]` copies the word in register R3 to variable y in memory  
+• `y := R3`  
+• y is changed; R3 is unchanged  
 
 [^1]: Each 16-bit register is 16 copies of the reg1 circuit

@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+#CS1S Notes (Sigma 16)
+##Lecture 7 (First)
+###Structure of Registers
+The RTM circuit has 4 (R0, …, R3), each holding 4 bits 
+There are 16 registers in Sigma16, each holding 16 bits (a
+16-bit word) [^1]
 
-You can use the [editor on GitHub](https://github.com/Arsenic-33/notes/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+###RTM Instructions
+The RTM circuit can execute only two instructions
+```
+R2 := R1 + R0 ; add two registers and load result
+R1 := 8 ; load a constant
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Arsenic-33/notes/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+[^1]: Each 16-bit register is 16 copies of the reg1 circuit

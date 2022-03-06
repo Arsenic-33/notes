@@ -77,5 +77,20 @@ store R5,x[R0] ; x := a+b+c
 • Do arithmetic with add, sub, mul, div  
 • Use store to copy result back to memory  
 
+### A complete example program (Sigma16 assembly)  
+; A minimal program that adds two integer variables  
+; Execution starts at location 0, where the first instruction will be placed when the program is executed  
+```
+load R1,x[R0] ; R1 := x
+load R2,y[R0] ; R2 := y
+add R3,R1,R2 ; R3 := x + y
+store R3,z[R0] ; z := x + y
+trap R0,R0,R0 ; terminate
+
+x data 23
+y data 14
+z data 99
+```
+Static variables are placed in memory after the program
 
 [^1]: Each 16-bit register is 16 copies of the reg1 circuit
